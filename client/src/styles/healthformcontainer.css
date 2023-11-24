@@ -1,0 +1,34 @@
+.health-form-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+  }
+  label{
+    text-align: left;
+  }
+  
+  .health-form {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 10px;
+    align-items: center;
+  }
+  
+  .form-group {
+    display: contents;
+  }
+  
+  .form-label {
+    text-align: right;
+    margin-right: 10px;
+  }
+  
+  .form-input, .submit-button {
+    width: 100%;
+  }
+  
+  .submit-button {
+    grid-column: 1 / span 2;
+    cursor: pointer;
+  }
+  
