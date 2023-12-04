@@ -14,7 +14,8 @@ The project structure comprises three folders: server, client, and datastore.
 ### Datastore
 Contains binaries for Apache Fuseki server, managing the triple store and SPARQL queries.
 
-The datastore is hosted on AWS's EC2 server which can be found here- 18.181.206.248:3030/#/ 
+The datastore is hosted on AWS's EC2 server which can be found here- http://18.181.206.248:3030/#/ 
+
 This website faces some downtime occasionally so obtion to visit it locally is described below-
 
 #### Running Datastore
