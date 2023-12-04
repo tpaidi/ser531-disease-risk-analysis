@@ -6,12 +6,12 @@ const HealthForm = () => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    age: 1,
-    gender: 0,
-    height: 0,
-    weight: 0,
+    age: 60,
+    gender: 110,
+    height: 100,
+    weight: 72,
     bloodPressure: '',
-    cholestrol: 0,
+    cholestrol: 1,
     glucoseLevels: 0,
     smokingHabits: 0,
     alcoholConsumption: 0,

@@ -35,40 +35,43 @@ const HealthDataTable = () => {
 
   const DemograpicDataResponse = async () => {
     try {
-      const res1 = await getDiseaseRiskAnalysisData(
-        formData.age,
-        formData.glucoseLevels,
-        formData.bloodPressure,
-        formData.height,
-        formData.weight,
-        formData.cholestrol,
-        formData.smokingHabits,
-        formData.physicalActivity,
-        formData.asthma,
-        formData.diabetes
+      let res1 = await getDiseaseRiskAnalysisData(
+        formData.age || 60 ,
+        formData.glucoseLevels || 1,
+        formData.bloodPressure ||100 ,
+        formData.height || 160,
+        formData.weight || 72,
+        formData.cholestrol || 1,
+        formData.smokingHabits || 0,
+        formData.physicalActivity || 0,
+        formData.asthma || 0,
+        formData.diabetes ||0
     );
+    console.log(res1)
+    res1 = res1.data;
 
       const data = res1.persons.map((x) => {
         return {
-          age: x.age || "",
-          gender: x.gender || "",
-          height: x.height || "",
-          weight: x.weight || "",
-          bloodPressure: x.bloodPressure || "",
-          cholesterol: x.cholesterol || "",
-          glucoseLevels: x.glucoseLevels || "",
-          smokingHabits: x.smokingHabits || "",
-          alcoholConsumption: x.alcoholConsumption || "",
-          physicalActivity: x.physicalActivity || "",
-          fever: x.fever || "",
-          cough: x.cough || "",
-          difficultBreathing: x.difficultBreathing || "",
-          asthma: x.asthma || "",
-          diabetes: x.diabetes || "",
-          covid: x.covid || "",
-          cardiovascularDiseases: x.cardiovascularDiseases || "",
-          respiratoryDisease: x.respiratoryDisease || "",
-          alzheimers: x.alzheimers || "",
+          key: Math.random(),
+          age: x.age || 0,
+          gender: (x.gender =="1" ? "Male" :"Female" )|| 0,
+          height: x.height || 0,
+          weight: x.weight || 0,
+          bloodPressure: x.bloodPressure || 0,
+          cholesterol: x.cholesterol || 0,
+          glucoseLevels: x.glucoseLevels ||0,
+          smokingHabits: x.smokingHabits || 0,
+          alcoholConsumption: x.alcoholConsumption || 0,
+          physicalActivity: x.physicalActivity || 0,
+          fever: x.fever || 0,
+          cough: x.cough || 0,
+          difficultBreathing: x.difficultBreathing || 0,
+          asthma: x.asthma || 0,
+          diabetes: x.diabetes || 0,
+          covid: x.covid || 0,
+          cardiovascularDiseases: x.cardiovascularDiseases || 0,
+          respiratoryDisease: x.respiratoryDisease || 0,
+          alzheimers: x.alzheimers || 0,
         };
       });
       setresponse1(data);

@@ -16,6 +16,7 @@ public class DiseasePredictionController {
 
     @Autowired
     FusekiHelper fusekiHelper;
+    @CrossOrigin(origins = "*")
     @RequestMapping(value = "/disease/{age}/{glucose}/{bp}/{height}/{weight}/{cholesterol}/{smoking}/{physical}/{asthma}/{diabetes}", method = RequestMethod.GET)
     public FinalResult getDiseaseInformation(
             @PathVariable String age,

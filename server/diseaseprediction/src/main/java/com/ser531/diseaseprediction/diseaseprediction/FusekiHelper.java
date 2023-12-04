@@ -34,7 +34,8 @@ public class FusekiHelper {
         		+ "  ?person df:hasPhysicalActivityLevel ?physical.\r\n"
         		+ "  ?person df:hasAsthma ?asthma.\r\n"
         		+ "  ?person df:hasCardiovascularDisease ?cardio.\r\n"
-        		+ "  FILTER (?age < \""+ Integer.toString((Integer.parseInt(age)+5))  +"\" && ?cholesterol = \""+ cholestrol +"\" && ?glucose = \""+glucose+"\" && ?bloodpressure > \""+Integer.toString((Integer.parseInt(bp)-20))  +"\" && ?age > \""+ Integer.toString((Integer.parseInt(age)-5))+"\" && ?bloodpressure< \""+Integer.toString((Integer.parseInt(bp)+20))+"\")\r\n"
+        		//+ "  FILTER (?age < \""+ Integer.toString((Integer.parseInt(age)+5))  +"\" && ?cholesterol = \""+ cholestrol +"\" && ?glucose = \""+glucose+"\" && ?bloodpressure > \""+Integer.toString((Integer.parseInt(bp)-20))  +"\" && ?age > \""+ Integer.toString((Integer.parseInt(age)-5))+"\" && ?bloodpressure< \""+Integer.toString((Integer.parseInt(bp)+20))+"\")\r\n"
+        		+ "  FILTER (?age < \""+ Integer.toString((Integer.parseInt(age)+5))  +"\" && ?cholesterol = \""+ cholestrol +"\" && ?glucose = \""+glucose+"\"  && ?age > \""+ Integer.toString((Integer.parseInt(age)-5))+"\")\r\n"
         		+ "} LIMIT 100";
         return q;
     }
@@ -42,7 +43,8 @@ public class FusekiHelper {
     
     public static FinalResult AllloadQuery(String age, String glucose, String bp, String height, String weight,String cholestrol, String smoking, String physical, String asthma, String diabetes) {
     	String q = createAllDiseaseQuery(age, glucose, bp, height, weight, cholestrol, smoking, physical, asthma, diabetes);
-        System.out.println(q);
+        System.out.println("123"+q);
+        System.out.println("hello");
         Integer covidCount = 0;
         Integer cardiovascularCount = 0;
         Integer totalCount = 0;
@@ -50,8 +52,8 @@ public class FusekiHelper {
         ResultSetAdapter result = (ResultSetAdapter) queryExecution.execSelect();
         System.out.println(result);
         FinalResult res = new FinalResult();
+        res.persons = new ArrayList<>();
         List<DiseasePerson> p  = new ArrayList<>();
-        
         
         while ((result).hasNext()) {
         	DiseasePerson dp = new DiseasePerson();
@@ -59,7 +61,7 @@ public class FusekiHelper {
             QuerySolution solution = (result).nextSolution();
             dp.age = solution.getLiteral("age").toString();
             dp.height = solution.getLiteral("height").toString();
-            dp.covid = solution.getLiteral("height").toString();
+            dp.covid = solution.getLiteral("covid").toString();
             dp.gender = solution.getLiteral("gender").toString();
             dp.weight = solution.getLiteral("weight").toString();
             dp.bloodPressure = solution.getLiteral("bloodpressure").toString();
@@ -69,12 +71,19 @@ public class FusekiHelper {
             dp.physicalActivity = solution.getLiteral("physical").toString();
             dp.asthma = solution.getLiteral("asthma").toString();
             dp.cardiovascularDiseases = solution.getLiteral("cardio").toString();
-
+            
             res.persons.add(dp);
+            totalCount +=1;
+            if(Integer.parseInt( dp.covid) != 0) {
+            	covidCount +=1;
+            }
+            if(Integer.parseInt( dp.cardiovascularDiseases) !=0 ) {
+            	cardiovascularCount +=1;
+            }
             
         }
         
-        res.cotalCount = totalCount;
+        res.totalCount = totalCount;
         res.covidCount = covidCount;
         res.cardiovascularCount = cardiovascularCount;
         System.out.println(result);

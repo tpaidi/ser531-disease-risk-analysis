@@ -1,6 +1,6 @@
 import Axios from "axios";
 
-const base = "http://localhost:3000";
+const base = "http://localhost:8080";
 
 
 const getDiseaseRiskAnalysisData = (age, glucoseLevels, bloodPressure, height, weight, cholestrol, smokingHabits, physicalActivity, asthma, diabetes) => {
