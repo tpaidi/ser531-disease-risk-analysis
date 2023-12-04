@@ -1,0 +1,27 @@
+.health-data-table .rc-table-thead {
+    background-color: #f0f0f0;
+    text-align: left;
+  }
+  
+  .health-data-table .rc-table-tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .health-data-table .rc-table-tbody tr:hover {
+    background-color: #e6f7ff;
+  }
+  
+  .health-data-table .rc-table-cell {
+    border: 1px solid #ddd;
+  }
+  
+  .health-data-table .rc-table-header-cell {
+    font-weight: bold;
+    padding: 10px;
+  }
+  
+  .health-data-table .rc-table-cell {
+    padding: 8px;
+    background: black;
+  }
+  
