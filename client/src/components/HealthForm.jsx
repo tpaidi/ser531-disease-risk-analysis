@@ -6,13 +6,13 @@ const HealthForm = () => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    age: "",
-    gender: "",
-    height: "",
-    weight: "",
-    bloodPressure: "",
-    cholesterol: "",
-    glucoseLevels: "",
+    age: 1,
+    gender: 0,
+    height: 0,
+    weight: 0,
+    bloodPressure: '',
+    cholestrol: 0,
+    glucoseLevels: 0,
     smokingHabits: 0,
     alcoholConsumption: 0,
     physicalActivity: 0,
@@ -20,11 +20,7 @@ const HealthForm = () => {
     cough: 0,
     difficultBreathing: 0,
     asthma: 0,
-    diabetes: 0,
-    covid: 0,
-    cardiovascularDiseases: 0,
-    respiratoryDisease: 0,
-    alzheimers: 0,
+    diabetes: 0
   });
 
   const handleChange = (e) => {
@@ -52,6 +48,8 @@ const HealthForm = () => {
             name="age"
             value={formData.age}
             onChange={handleChange}
+            min={0}
+            max={120}
           />
         </div>
 
@@ -86,31 +84,37 @@ const HealthForm = () => {
         <div className="form-group">
           <label>Blood Pressure: </label>
           <input
-            type="text"
+            type="number"
             name="bloodPressure"
             value={formData.bloodPressure}
             onChange={handleChange}
+            min={90}
+            max={170}
           />
         </div>
 
         <div className="form-group">
-          <label>Cholesterol: </label>
-          <input
-            type="text"
-            name="cholesterol"
-            value={formData.cholesterol}
+          <label>Has High Cholestrol: </label>
+          <select
+            name="cholestrol"
+            value={formData.cholestrol}
             onChange={handleChange}
-          />
+          >
+            <option value={1}>Yes</option>
+            <option value={0}>No</option>
+          </select>
         </div>
 
         <div className="form-group">
           <label>Glucose Levels: </label>
-          <input
-            type="text"
+          <select
             name="glucoseLevels"
             value={formData.glucoseLevels}
             onChange={handleChange}
-          />
+          >
+            <option value={1}>High</option>
+            <option value={0}>Low</option>
+          </select>
         </div>
 
         <div className="form-group">
@@ -190,50 +194,6 @@ const HealthForm = () => {
           <select
             name="diabetes"
             value={formData.diabetes}
-            onChange={handleChange}
-          >
-            <option value={1}>True</option>
-            <option value={0}>False</option>
-          </select>
-        </div>
-
-        <div className="form-group">
-          <label>Covid: </label>
-          <select name="covid" value={formData.covid} onChange={handleChange}>
-            <option value={1}>True</option>
-            <option value={0}>False</option>
-          </select>
-        </div>
-
-        <div className="form-group">
-          <label>Cardiovascular Diseases: </label>
-          <select
-            name="cardiovascularDiseases"
-            value={formData.cardiovascularDiseases}
-            onChange={handleChange}
-          >
-            <option value={1}>True</option>
-            <option value={0}>False</option>
-          </select>
-        </div>
-
-        <div className="form-group">
-          <label>Respiratory Disease: </label>
-          <select
-            name="respiratoryDisease"
-            value={formData.respiratoryDisease}
-            onChange={handleChange}
-          >
-            <option value={1}>True</option>
-            <option value={0}>False</option>
-          </select>
-        </div>
-
-        <div className="form-group">
-          <label>Alzheimer's: </label>
-          <select
-            name="alzheimers"
-            value={formData.alzheimers}
             onChange={handleChange}
           >
             <option value={1}>True</option>
