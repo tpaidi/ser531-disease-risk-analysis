@@ -14,6 +14,9 @@ The project structure comprises three folders: server, client, and datastore.
 ### Datastore
 Contains binaries for Apache Fuseki server, managing the triple store and SPARQL queries.
 
+The datastore is hosted on AWS's EC2 server which can be found here- 18.181.206.248:3030/#/ 
+This website faces some downtime occasionally so obtion to visit it locally is described below-
+
 #### Running Datastore
 ```bash
 cd datastore
@@ -34,17 +37,17 @@ mvn install
 mvn spring-boot:run
 ```
 
-### Server
-Acts as a bridge between client and datastore, converting front-end parameters to SPARQL queries.
+### Client
+Built with React + Vite, it provides the user interface.
 
-Running Server
-
+Running Client
 ```bash
-cd server/diseaseprediction
-# With Maven installed
-mvn install
-mvn spring-boot:run
+cd client
+# With Node.js and npm installed
+npm install
+npm run dev
 ```
+You can visit the website now on http://localhost:3000/
 
 ### Additional Resources
 RDF Data File: Disease-Finder.rdf located in the root directory.
