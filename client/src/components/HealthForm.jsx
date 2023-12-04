@@ -54,14 +54,6 @@ const HealthForm = () => {
         </div>
 
         <div className="form-group">
-          <label>Gender: </label>
-          <select name="gender" value={formData.gender} onChange={handleChange}>
-            <option value={1}>Male</option>
-            <option value={0}>Female</option>={" "}
-          </select>
-        </div>
-
-        <div className="form-group">
           <label>Height (cm): </label>
           <input
             type="number"
