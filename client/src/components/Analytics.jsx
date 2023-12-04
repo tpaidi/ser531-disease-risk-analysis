@@ -89,7 +89,7 @@ const HealthDataTable = () => {
     ["abc", "bcs"],
     ["Cardiovascular", cardiovascularDiseaseCount],
     [
-      "People who dont have cardiovascular",
+      "People who dont have cardiovascular disease",
       totalCount - cardiovascularDiseaseCount,
     ],
   ];
