@@ -3,7 +3,7 @@
 ## Summary
 This project integrates healthcare datasets into a single ontology to create a consistent and queryable dataset. Users can input specific parameters to retrieve data about the prevalence of COVID-19 or cardiovascular diseases among certain demographic groups.
 
-Video Walkthrough: A video guide is available on YouTube <youtube link>.
+Video Walkthrough: A video guide is available on YouTube https://youtu.be/DARVWEP92_I .
 
 ## Application Functionality
 With the application, users input parameters like age, cholesterol, glucose levels, and blood pressure to extract data from the dataset. The output includes the count of individuals with specified conditions and is displayed as a table and pie chart, illustrating the proportion of the total matching the criteria.
