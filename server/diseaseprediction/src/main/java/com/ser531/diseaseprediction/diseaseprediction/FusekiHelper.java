@@ -16,35 +16,38 @@ public class FusekiHelper {
     static String fusekiEndPoint = "http://localhost:3030/diz/";
     
     static public String createAllDiseaseQuery(String age, String glucose, String bp, String height, String weight,String cholestrol, String smoking, String physical, String asthma, String diabetes) {
-        String q = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\r\n"
-        		+ "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\r\n"
-        		+ "PREFIX df: <http://www.semanticweb.org/maruti/ontologies/2023/10/Disease-Finder#>\r\n"
-        		+ "SELECT ?person ?age ?height ?covid ?gender ?weight ?bloodpressure ?cholesterol ?glucose ?smoking ?physical ?asthma ?cardio\r\n"
-        		+ "WHERE {\r\n"
-        		+ "  ?person rdf:type df:Person.\r\n"
-        		+ "  ?person df:hasAge ?age.\r\n"
-        		+ "  ?person df:hasHeight ?height.\r\n"
-        		+ "  ?person df:hasCovid-19Disease ?covid.\r\n"
-        		+ "  ?person df:hasGender ?gender.\r\n"
-        		+ "  ?person df:hasWeight ?weight.\r\n"
-        		+ "  ?person df:hasBloodPressure ?bloodpressure.\r\n"
-        		+ "  ?person df:hasCholesterolLevel ?cholesterol.\r\n"
-        		+ "  ?person df:hasGlucoseLevel ?glucose.\r\n"
-        		+ "  ?person df:hasSmokingHabit ?smoking.\r\n"
-        		+ "  ?person df:hasPhysicalActivityLevel ?physical.\r\n"
-        		+ "  ?person df:hasAsthma ?asthma.\r\n"
-        		+ "  ?person df:hasCardiovascularDisease ?cardio.\r\n"
+        String q = 
+			"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\r\n"
+			+ "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\r\n"
+			+ "PREFIX df: <http://www.semanticweb.org/maruti/ontologies/2023/10/Disease-Finder#>\r\n"
+			+ "SELECT ?person ?age ?height ?covid ?gender ?weight ?bloodpressure ?cholesterol ?glucose ?smoking ?physical ?asthma ?cardio\r\n"
+			+ "WHERE {\r\n"
+			+ "  ?person rdf:type df:Person.\r\n"
+			+ "  ?person df:hasAge ?age.\r\n"
+			+ "  ?person df:hasHeight ?height.\r\n"
+			+ "  ?person df:hasCovid-19Disease ?covid.\r\n"
+			+ "  ?person df:hasGender ?gender.\r\n"
+			+ "  ?person df:hasWeight ?weight.\r\n"
+			+ "  ?person df:hasBloodPressure ?bloodpressure.\r\n"
+			+ "  ?person df:hasCholesterolLevel ?cholesterol.\r\n"
+			+ "  ?person df:hasGlucoseLevel ?glucose.\r\n"
+			+ "  ?person df:hasSmokingHabit ?smoking.\r\n"
+			+ "  ?person df:hasPhysicalActivityLevel ?physical.\r\n"
+			+ "  ?person df:hasAsthma ?asthma.\r\n"
+			+ "  ?person df:hasCardiovascularDisease ?cardio.\r\n"
+			//+"FILTER (?age < \""+Integer.toString((Integer.parseInt(age)+25)) +"\" && ?age > \""+Integer.toString((Integer.parseInt(age)-25))+"\" && ?cholesterol = \""+cholestrol+"\" && ?asthma = \""+asthma+"\" && ?height > \""+ Integer.toString((Integer.parseInt(height)-25))+"\" && ?height < \""+ Integer.toString((Integer.parseInt(height)+25))+"\" && ?weight > \""+ Integer.toString((Integer.parseInt(weight)-20))+"\" && ?glucose = \""+glucose+"\" && ?bloodpressure > \""+ Integer.toString((Integer.parseInt(bp)-25))+"\"  && ?bloodpressure< \""+ Integer.toString((Integer.parseInt(bp)+25))+"\" && ?physical = \""+physical+"\")}\r\n";
+			+"FILTER (?age < \""+Integer.toString((Integer.parseInt(age)+25)) +"\" && ?cholesterol = \""+cholestrol+"\" && ?asthma = \""+asthma+"\" && ?height > \""+ Integer.toString((Integer.parseInt(height)-25))+"\" && ?weight > \""+ Integer.toString((Integer.parseInt(weight)-20))+"\" && ?glucose = \""+glucose+"\"  && ?bloodpressure< \""+ Integer.toString((Integer.parseInt(bp)+25))+"\" && ?physical = \""+physical+"\")}\r\n";
+
         		//+ "  FILTER (?age < \""+ Integer.toString((Integer.parseInt(age)+5))  +"\" && ?cholesterol = \""+ cholestrol +"\" && ?glucose = \""+glucose+"\" && ?bloodpressure > \""+Integer.toString((Integer.parseInt(bp)-20))  +"\" && ?age > \""+ Integer.toString((Integer.parseInt(age)-5))+"\" && ?bloodpressure< \""+Integer.toString((Integer.parseInt(bp)+20))+"\")\r\n"
-        		+ "  FILTER (?age < \""+ Integer.toString((Integer.parseInt(age)+5))  +"\" && ?cholesterol = \""+ cholestrol +"\" && ?glucose = \""+glucose+"\"  && ?age > \""+ Integer.toString((Integer.parseInt(age)-5))+"\")\r\n"
-        		+ "} LIMIT 100";
+        		//+ "  FILTER (?age < \""+ Integer.toString((Integer.parseInt(age)+5))  +"\" && ?cholesterol = \""+ cholestrol +"\" && ?glucose = \""+glucose+"\"  && ?age > \""+ Integer.toString((Integer.parseInt(age)-5))+"\")\r\n"
+        		//+ "} LIMIT 100";
         return q;
     }
 
     
     public static FinalResult AllloadQuery(String age, String glucose, String bp, String height, String weight,String cholestrol, String smoking, String physical, String asthma, String diabetes) {
     	String q = createAllDiseaseQuery(age, glucose, bp, height, weight, cholestrol, smoking, physical, asthma, diabetes);
-        System.out.println("123"+q);
-        System.out.println("hello");
+        System.out.println(q);
         Integer covidCount = 0;
         Integer cardiovascularCount = 0;
         Integer totalCount = 0;
